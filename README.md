@@ -25,3 +25,7 @@ Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/
             }
 
 
+The example  prints out:
+
+    Found 1 results
+    Location: 37.596372 55.885721
