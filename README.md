@@ -29,3 +29,8 @@ The example  prints out:
 
     Found 1 results
     Location: 37.596372 55.885721
+
+
+The library is straightforward to use: just set the necessary request parameters via `GeocoderRequest.Builder` and get your results via `Geocoder`.
+
+Refer to javadoc and [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/About-docpage/) for request parameters and service description.
