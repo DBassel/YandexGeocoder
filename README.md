@@ -156,4 +156,4 @@ All contributions are welcome.
 
 #4. License
 
-Apache License, 2.0. [See](LICENSE)
+[Apache License, 2.0](LICENSE)
