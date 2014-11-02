@@ -1,6 +1,6 @@
-import api.address.*;
-import api.geocoding.*;
 import com.google.gson.Gson;
+import com.yandex.geocoder.api.address.*;
+import com.yandex.geocoder.api.geocoding.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

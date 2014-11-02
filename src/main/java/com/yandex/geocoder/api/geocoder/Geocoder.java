@@ -1,8 +1,8 @@
-package api.geocoder;
+package com.yandex.geocoder.api.geocoder;
 
 
-import api.geocoding.GeocoderRequest;
-import api.geocoding.GeocoderResponse;
+import com.yandex.geocoder.api.geocoding.GeocoderRequest;
+import com.yandex.geocoder.api.geocoding.GeocoderResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.http.HttpEntity;

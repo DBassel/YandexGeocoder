@@ -1,7 +1,7 @@
-package api.geocoding;
+package com.yandex.geocoder.api.geocoding;
 
-import api.address.AddressDetails;
 import com.google.gson.annotations.SerializedName;
+import com.yandex.geocoder.api.address.AddressDetails;
 
 /**
  * Contains detailed information on the found toponym
