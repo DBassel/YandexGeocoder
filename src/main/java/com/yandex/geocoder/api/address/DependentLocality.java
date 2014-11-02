@@ -10,6 +10,8 @@ public class DependentLocality {
     String dependentLocalityName;
     @SerializedName("Thoroughfare")
     Thoroughfare thoroughfare;
+    @SerializedName("Premise")
+    Premise premise;
 
     DependentLocality() {
 
@@ -30,4 +32,11 @@ public class DependentLocality {
         return thoroughfare;
     }
 
+
+    /**
+     * @return get premise, if any
+     * */
+    public Premise getPremise() {
+        return premise;
+    }
 }

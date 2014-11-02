@@ -6,7 +6,7 @@
 
     <groupId>com.yandex.geocoder</groupId>
     <artifactId>geocoder</artifactId>
-    <version>0.1</version>
+    <version>0.1.2</version>
 
     <name>Yandex Geocoder</name>
     <description>Java API for Yandex geocoder</description>
