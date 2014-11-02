@@ -9,15 +9,15 @@ public class LatLng {
 
     /**
      * Construct a LatLng
-     * @param pos a String in format "lat, lng", e.g. "45.545345, 64.23423"
+     * @param pos a String in format "lng, lat", e.g. "45.545345, 64.23423"
      * */
     public LatLng(String pos) {
         String[] ll = pos.split(" ");
         if (ll.length != 2) {
             throw new IllegalArgumentException("Format of pos in not supported. Should be \"lat, lng\", e.g. \"45.545345, 64.23423\"");
         }
-        lat = Double.parseDouble(ll[0]);
-        lng = Double.parseDouble(ll[1]);
+        lat = Double.parseDouble(ll[1]);
+        lng = Double.parseDouble(ll[0]);
         this.pos = pos;
     }
 
