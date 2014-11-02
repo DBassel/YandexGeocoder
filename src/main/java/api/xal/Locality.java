@@ -11,6 +11,9 @@ public  class Locality {
     @SerializedName("Thoroughfare")
     Thoroughfare thoroughfare;
 
+    Locality() {
+
+    }
 
     /**
      * @return name of the locality

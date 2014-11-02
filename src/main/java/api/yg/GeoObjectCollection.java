@@ -16,7 +16,9 @@ public class GeoObjectCollection {
     @SerializedName("featureMember")
     List<GeoObjectHolder> geoObjects;
 
+    GeoObjectCollection(){
 
+    }
 
     /**
      * @return a list of wrappers around GeoObject results

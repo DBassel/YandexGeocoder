@@ -9,6 +9,10 @@ public class Premise {
     @SerializedName("PremiseNumber")
     String premiseNumber;
 
+    Premise(){
+
+    }
+
     /**
      * @return premise number String
      * */

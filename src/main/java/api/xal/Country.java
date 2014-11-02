@@ -15,6 +15,9 @@ public class Country {
     @SerializedName("AdministrativeArea")
     AdministrativeArea administrativeArea;
 
+    Country(){
+
+    }
 
     /**
      * @return fully qualified address line

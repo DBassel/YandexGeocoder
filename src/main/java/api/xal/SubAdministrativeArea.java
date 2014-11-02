@@ -11,6 +11,9 @@ public  class SubAdministrativeArea {
     @SerializedName("Locality")
     Locality locality;
 
+    SubAdministrativeArea(){
+
+    }
 
     /**
      * @return name of the SubAdministrativeArea

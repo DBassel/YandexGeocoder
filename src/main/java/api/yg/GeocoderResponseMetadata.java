@@ -29,6 +29,9 @@ public class GeocoderResponseMetadata {
     @SerializedName("skip")
     private int skip;
 
+    GeocoderResponseMetadata(){
+
+    }
 
     /**
      * Requested address

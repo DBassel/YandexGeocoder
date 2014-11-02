@@ -12,6 +12,9 @@ public class Thoroughfare {
     @SerializedName("Premise")
     Premise premise;
 
+    Thoroughfare(){
+
+    }
 
     /**
      * @return name of the thoroughfare

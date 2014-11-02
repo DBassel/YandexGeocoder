@@ -14,6 +14,7 @@ public class GeoObject {
     @SerializedName("Point")
     Point point;
 
+    GeoObject(){}
     /**
      * @return MetadataProperty, a wrapper around GeocoderMetadata for the object
      */

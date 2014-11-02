@@ -14,9 +14,7 @@ public class GeocoderRequest {
     public static final int RSPN_DEFAULT = 0;
     public static final int NOT_SPECIFIED = -1;
 
-    private String geocode;
 
-    private Kind kind;
 
     /*Restrict search area to parameters ll, spn*/
     private int rspn = RSPN_DEFAULT;
@@ -35,10 +33,14 @@ public class GeocoderRequest {
 
     private ResponseLanguage language;
 
+    private String geocode;
+
+    private Kind kind;
+
     /*key is not necessary to use geocoder, as long as you perform no more than 25 000 requests per day*/
     private String key;
 
-    private GeocoderRequest() {
+    GeocoderRequest() {
 
     }
 

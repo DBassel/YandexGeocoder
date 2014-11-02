@@ -14,6 +14,10 @@ public class AdministrativeArea {
     @SerializedName("SubAdministrativeArea")
     SubAdministrativeArea subAdministrativeArea;
 
+
+    AdministrativeArea(){
+
+    }
     /**
      * @return name of the administrative area
      * */
