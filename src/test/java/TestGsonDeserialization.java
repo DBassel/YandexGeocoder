@@ -4,6 +4,7 @@ import com.yandex.geocoder.api.geocoding.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -252,6 +253,85 @@ public class TestGsonDeserialization {
         AddressDetails details = new Gson().fromJson(validJson, AddressDetails.class);
 
         testNullityHelper(details);
+
+    }
+
+    @Test
+    public void testDependentLocation() {
+
+        String valid = "{  \n" +
+                "   \"response\":{  \n" +
+                "      \"Attribution\":\"\",\n" +
+                "      \"GeoObjectCollection\":{  \n" +
+                "         \"metaDataProperty\":{  \n" +
+                "            \"GeocoderResponseMetaData\":{  \n" +
+                "               \"request\":\"Саратовская область, Балаково, микрорайон Жилгородок, Комсомольская улица, 29\",\n" +
+                "               \"found\":\"1\",\n" +
+                "               \"results\":\"10\"\n" +
+                "            }\n" +
+                "         },\n" +
+                "         \"featureMember\":[  \n" +
+                "            {  \n" +
+                "               \"GeoObject\":{  \n" +
+                "                  \"metaDataProperty\":{  \n" +
+                "                     \"GeocoderMetaData\":{  \n" +
+                "                        \"kind\":\"house\",\n" +
+                "                        \"text\":\"Россия, Саратовская область, Балаково, микрорайон Жилгородок, Комсомольская улица, 29\",\n" +
+                "                        \"precision\":\"exact\",\n" +
+                "                        \"AddressDetails\":{  \n" +
+                "                           \"Country\":{  \n" +
+                "                              \"AddressLine\":\"Саратовская область, Балаково, микрорайон Жилгородок, Комсомольская улица, 29\",\n" +
+                "                              \"CountryNameCode\":\"RU\",\n" +
+                "                              \"CountryName\":\"Россия\",\n" +
+                "                              \"AdministrativeArea\":{  \n" +
+                "                                 \"AdministrativeAreaName\":\"Саратовская область\",\n" +
+                "                                 \"SubAdministrativeArea\":{  \n" +
+                "                                    \"SubAdministrativeAreaName\":\"Балаковский район\",\n" +
+                "                                    \"Locality\":{  \n" +
+                "                                       \"LocalityName\":\"Балаково\",\n" +
+                "                                       \"DependentLocality\":{  \n" +
+                "                                          \"DependentLocalityName\":\"микрорайон Жилгородок\",\n" +
+                "                                          \"Thoroughfare\":{  \n" +
+                "                                             \"ThoroughfareName\":\"Комсомольская улица\",\n" +
+                "                                             \"Premise\":{  \n" +
+                "                                                \"PremiseNumber\":\"29\"\n" +
+                "                                             }\n" +
+                "                                          }\n" +
+                "                                       }\n" +
+                "                                    }\n" +
+                "                                 }\n" +
+                "                              }\n" +
+                "                           }\n" +
+                "                        }\n" +
+                "                     }\n" +
+                "                  },\n" +
+                "                  \"description\":\"микрорайон Жилгородок, Балаково, Саратовская область, Россия\",\n" +
+                "                  \"name\":\"Комсомольская улица, 29\",\n" +
+                "                  \"boundedBy\":{  \n" +
+                "                     \"Envelope\":{  \n" +
+                "                        \"lowerCorner\":\"47.769254 52.02232\",\n" +
+                "                        \"upperCorner\":\"47.785711 52.032472\"\n" +
+                "                     }\n" +
+                "                  },\n" +
+                "                  \"Point\":{  \n" +
+                "                     \"pos\":\"47.777482 52.027396\"\n" +
+                "                  }\n" +
+                "               }\n" +
+                "            }\n" +
+                "         ]\n" +
+                "      }\n" +
+                "   }\n" +
+                "}";
+
+        GeocoderResponse response = new Gson().fromJson(valid, GeocoderResponse.class);
+        AddressDetails l = response.getMostAccurateResult().getMetadataProperty().getGeocoderMetadata().getAddressDetails();
+        DependentLocality d = l.getCountry().getAdministrativeArea().getSubAdministrativeArea()
+                .getLocality().getDependentLocality();
+        assertNotNull(d);
+        assertNotNull(d.getDependentLocalityName());
+        assertNotNull(d.getThoroughfare().getPremise());
+        assertNotNull(d.getThoroughfare().getPremise().getPremiseNumber());
+
 
     }
 

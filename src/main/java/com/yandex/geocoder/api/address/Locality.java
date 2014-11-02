@@ -10,6 +10,9 @@ public  class Locality {
     String localityName;
     @SerializedName("Thoroughfare")
     Thoroughfare thoroughfare;
+    @SerializedName("DependentLocality")
+    DependentLocality dependentLocality;
+
 
     Locality() {
 
@@ -29,4 +32,12 @@ public  class Locality {
         return thoroughfare;
     }
 
+
+    /**
+     *
+     * @return dependent locality.
+     * */
+    public DependentLocality getDependentLocality() {
+        return dependentLocality;
+    }
 }
