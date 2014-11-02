@@ -3,7 +3,57 @@ YandexGeocoder
 
 Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/About-docpage/)
 
-#1. Usage
+#1. Maven dependency
+
+To use this library, you need to add the following repository to your `pom.xml`:
+
+"com.yandex.geocoder" % "geocoder" % "0.1" withJavadoc()
+
+    <repositories>
+        ...
+        <repository>
+            <id>YandexGeocoder</id>
+            <url>https://raw.github.com/ousenko/YandexGeocoder/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        ...
+    </repositories>
+
+
+Then add the following dependency to your `pom.xml`:
+
+    <dependencies>
+        <dependency>
+            <groupId>com.yandex.tech.geocoder</groupId>
+            <artifactId>geocoder</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <!-- If you need javadoc
+        <dependency>
+                    <groupId>com.yandex.tech.geocoder</groupId>
+                    <artifactId>geocoder</artifactId>
+                    <version>0.1</version>
+                    <classifier>javadoc</classifier>
+                </dependency>
+        -->
+        <!-- If you need sources
+                <dependency>
+                            <groupId>com.yandex.tech.geocoder</groupId>
+                            <artifactId>geocoder</artifactId>
+                            <version>0.1</version>
+                            <classifier>sources</classifier>
+                        </dependency>
+                -->
+    </dependencies>
+
+And you're fine.
+
+
+
+#2. Usage
 
     GeocoderRequest request = new GeocoderRequest.Builder("Москва, Костромская, 12").get();
 
@@ -91,7 +141,14 @@ The example  prints out:
 
 
 
-
 The library is straightforward to use: just set the necessary request parameters via `GeocoderRequest.Builder` and get your results via `Geocoder`.
 
 Refer to javadoc and [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/About-docpage/) for request parameters and service description.
+
+#3. Contributions
+
+All contributions are welcome.
+
+#4. License
+
+Apache License, 2.0. [See](LICENSE)
