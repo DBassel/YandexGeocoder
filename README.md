@@ -7,7 +7,6 @@ Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/
 
 To use this library, you need to add the following repository to your `pom.xml`:
 
-"com.yandex.geocoder" % "geocoder" % "0.1" withJavadoc()
 
     <repositories>
         ...
@@ -55,7 +54,11 @@ And you're fine.
 
 #2. Usage
 
-    GeocoderRequest request = new GeocoderRequest.Builder("Москва, Костромская, 12").get();
+    public class Example{
+
+        public static void main(String[] args){
+
+            GeocoderRequest request = new GeocoderRequest.Builder("Москва, Костромская, 12").get();
 
             //search for objects near or with the area
             GeocoderRequest requestSearchNearArea = new GeocoderRequest.Builder("Ивановка")
@@ -127,6 +130,8 @@ And you're fine.
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
 
 
 The example  prints out:
