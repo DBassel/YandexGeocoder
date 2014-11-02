@@ -1,4 +1,4 @@
-package api.yg;
+package api.geocoding;
 
 /**
  * Precision of match when comparing building number from response with found building number.

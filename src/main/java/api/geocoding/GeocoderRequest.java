@@ -1,4 +1,4 @@
-package api.yg;
+package api.geocoding;
 
 
 /**
@@ -234,11 +234,13 @@ public class GeocoderRequest {
         }
 
         /**
-         * Specify maximum amount of returned results
+         * Specify maximum amount of returned results. The server never returns JSON with more than 100 results.
+         * <br>Even if the {@code results } is greater than 100, the maximal amount of results in response will still be 100.
+         *
          *
          * @param results maximal amount of results in response
          * @return the same Builder object
-         * @throws IllegalArgumentException if results <= 0
+         * @throws IllegalArgumentException if {@code results <= 0}
          */
         public Builder setResults(int results) {
             if (results <= 0) {

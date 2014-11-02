@@ -1,4 +1,6 @@
-import api.yg.GeocoderRequest;
+package api.geocoder;
+
+import api.geocoding.GeocoderRequest;
 import api.geocoder.Geocoder;
 import org.junit.Test;
 
@@ -14,10 +16,9 @@ public class TestGeocoderRequestBuilder {
                 new GeocoderRequest.Builder("Москва, Тверская 6").get();
 
         Geocoder geocoder = new Geocoder();
-        String testUrl = geocoder.getURL(request);
+        String testUrl = geocoder.getURI(request).toString();
         assertEquals(requestStr, testUrl);
     }
-
     @Test
     public void testNotRestrictedSearchArea() {
         String searchCloseUrl = "http://geocode-maps.yandex.ru/1.x/?format=json&geocode=Ивановка&ll=37.61892,55.756994&spn=3.552069,2.400552";
@@ -25,8 +26,8 @@ public class TestGeocoderRequestBuilder {
         GeocoderRequest request2 = new GeocoderRequest.Builder("Ивановка").setSearchArea(false, new GeocoderRequest.SearchBoundary(37.618920, 55.756994, 3.552069, 2.400552)).get();
 
         Geocoder geocoder = new Geocoder();
-        String testUrl1 = geocoder.getURL(request1);
-        String testUrl2 = geocoder.getURL(request2);
+        String testUrl1 = geocoder.getURI(request1).toString();
+        String testUrl2 = geocoder.getURI(request2).toString();
 
         assertEquals(searchCloseUrl,testUrl1);
         assertEquals(searchCloseUrl,testUrl2);
@@ -42,8 +43,8 @@ public class TestGeocoderRequestBuilder {
         GeocoderRequest request2 = new GeocoderRequest.Builder("Ивановка").setSearchArea(true, new GeocoderRequest.SearchBoundary(37.618920, 55.756994, 3.552069, 2.400552)).get();
 
         Geocoder geocoder = new Geocoder();
-        String testUrl1 = geocoder.getURL(request1);
-        String testUrl2 = geocoder.getURL(request2);
+        String testUrl1 = geocoder.getURI(request1).toString();
+        String testUrl2 = geocoder.getURI(request2).toString();
 
         assertEquals(searchCloseUrl,testUrl1);
         assertEquals(searchCloseUrl,testUrl2);
@@ -56,7 +57,7 @@ public class TestGeocoderRequestBuilder {
         String req = "http://geocode-maps.yandex.ru/1.x/?format=json&geocode=Ивановка&results=5&skip=42";
         GeocoderRequest request1 = new GeocoderRequest.Builder("Ивановка").setResults(5).setSkip(42).get();
         Geocoder geocoder = new Geocoder();
-        String url = geocoder.getURL(request1);
+        String url = geocoder.getURI(request1).toString();
         assertEquals(req, url);
 
     }
@@ -67,7 +68,7 @@ public class TestGeocoderRequestBuilder {
         String req = "http://geocode-maps.yandex.ru/1.x/?format=json&geocode=город+Москва,+Тверская+улица,+дом+18,+корпус+1&results=5&skip=42";
         GeocoderRequest request1 = new GeocoderRequest.Builder("город Москва, Тверская улица, дом 18, корпус 1").setResults(5).setSkip(42).get();
         Geocoder geocoder = new Geocoder();
-        String url = geocoder.getURL(request1);
+        String url = geocoder.getURI(request1).toString();
         assertEquals(req, url);
     }
 

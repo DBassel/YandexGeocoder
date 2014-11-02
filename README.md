@@ -6,19 +6,73 @@ Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/
 #1. Usage
 
     GeocoderRequest request = new GeocoderRequest.Builder("Москва, Костромская, 12").get();
-            Geocoder geocoder = new Geocoder();
+
+            //search for objects near or with the area
+            GeocoderRequest requestSearchNearArea = new GeocoderRequest.Builder("Ивановка")
+                    .setSearchArea(false, //find results within or near boundary
+                            new GeocoderRequest.SearchBoundary(37.618920, 55.756994, 3.552069, 2.400552)).get();
+
+            //search for objects WITHIN the area
+            GeocoderRequest requestRestrictSearchToArea = new GeocoderRequest.Builder("Ивановка")
+                    .setSearchArea(true,//restrict search to boundary
+                            new GeocoderRequest.SearchBoundary(37.618920, 55.756994, 3.552069, 2.400552)).get();
+
+
+            Geocoder geocoder = new Geocoder();//create standard geocoder
             try {
                 GeocoderResponse response = geocoder.geocode(request);
+
+
                 System.out.println(
                         String.format(
-                                "Found %d results",
-                                response.getResponse().getCollection().getMetadataProperty().getMetadata().getFound()
+                                "When searching for \"%s\", Found %d results",
+                                request.getGeocode(),//get search address
+                                response.getResponse().getCollection().getMetadataProperty().getMetadata().getFound()//get amount of found items
+                        )
+                );
+                System.out.println("The match was: " + response.getResponse()
+                        .getCollection()
+                        .getGeoObjectHolders()//get List of wrappers around GeoObject
+                        .get(0).getObject()
+                        .getMetadataProperty().getGeocoderMetadata().getPrecision());//get precision of search match
+
+                System.out.println("Location is: " + response.getResponse()
+                        .getCollection()
+                        .getGeoObjectHolders()
+                        .get(0).getObject().getPoint().getPositionString());
+
+
+                //iterate over found results
+                for (GeoObjectCollection.GeoObjectHolder holder : response.getResponse().getCollection().getGeoObjectHolders()) {
+                    System.out.println(
+                            String.format("GeoObject: %s,%s ",
+                                    holder.getObject().getDescription(),
+                                    holder.getObject().getName()));
+                }
+
+                GeocoderResponse responseNearAreaRequest = geocoder.geocode(requestSearchNearArea);
+
+                System.out.println(
+                        String.format(
+                                "When searching for \"%s\" near specified area, Found %d results",
+                                requestSearchNearArea.getGeocode(),
+                                responseNearAreaRequest.getResponse().getCollection().getMetadataProperty().getMetadata().getFound()
                         )
                 );
 
-                for (GeoObjectCollection.GeoObjectHolder holder : response.getResponse().getCollection().getGeoObjectHolders()) {
-                    System.out.println("Location: " + holder.getObject().getPoint().getPositionString());
-                }
+
+
+                GeoObject accurate = responseNearAreaRequest.getMostAccurateResult();
+                System.out.println("Among those the most accurate is: " + accurate.getDescription() + ", " + accurate.getName() + ", location = " + accurate.getPoint().getPositionString());
+
+                GeocoderResponse responseRestrictedAreaSearchRequest = geocoder.geocode(requestRestrictSearchToArea);
+                System.out.println(
+                        String.format(
+                                "When searching for \"%s\" WITHIN the specified boundary, Found %d results",
+                                requestRestrictSearchToArea.getGeocode(),
+                                responseRestrictedAreaSearchRequest.getResponse().getCollection().getMetadataProperty().getMetadata().getFound()
+                        )
+                );
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -27,8 +81,15 @@ Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/
 
 The example  prints out:
 
-    Found 1 results
-    Location: 37.596372 55.885721
+    When searching for "Москва, Костромская, 12", Found 1 results
+    The match was: exact
+    Location is: 37.596372 55.885721
+    GeoObject: Москва, Россия,Костромская улица, 12
+    When searching for "Ивановка" near specified area, Found 545 results
+    Among those the most accurate is: Арзамас, Нижегородская область, Россия, микрорайон Ивановка, location = 43.824805 55.366323
+    When searching for "Ивановка" WITHIN the specified boundary, Found 0 results
+
+
 
 
 The library is straightforward to use: just set the necessary request parameters via `GeocoderRequest.Builder` and get your results via `Geocoder`.

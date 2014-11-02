@@ -1,4 +1,4 @@
-package api.xal;
+package api.address;
 
 
 import com.google.gson.annotations.SerializedName;

@@ -1,4 +1,4 @@
-package api.yg;
+package api.geocoding;
 
 import com.google.gson.annotations.SerializedName;
 

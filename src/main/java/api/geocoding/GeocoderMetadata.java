@@ -1,6 +1,6 @@
-package api.yg;
+package api.geocoding;
 
-import api.xal.AddressDetails;
+import api.address.AddressDetails;
 import com.google.gson.annotations.SerializedName;
 
 /**

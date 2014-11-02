@@ -1,5 +1,5 @@
-import api.xal.*;
-import api.yg.*;
+import api.address.*;
+import api.geocoding.*;
 import com.google.gson.Gson;
 import org.junit.Test;
 
