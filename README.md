@@ -3,6 +3,17 @@ YandexGeocoder
 
 Java API for [Yandex Geocoder service](https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/About-docpage/)
 
+#0. Beware
+
+Things are pretty rough for now.
+Project started as an attempt to provide a Java API for Yandex Geocoder similar to google geocoder java api.
+
+But **unlike** google -  all this crazy nesting in yandex geocoder insane responses possibly prevent this from being done via elegant gson deserialization.
+
+I was able to achieve sensible results on a small set of addressess of **mine** interest (~1000 addresses for now).
+
+Someone let me know  if there are situations where API sucks significantly.
+
 #1. Maven dependency
 
 To use this library, you need to add the following repository to your `pom.xml`:
