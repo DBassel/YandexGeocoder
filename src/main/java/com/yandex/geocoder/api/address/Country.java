@@ -14,6 +14,8 @@ public class Country {
     String countryName;
     @SerializedName("AdministrativeArea")
     AdministrativeArea administrativeArea;
+    @SerializedName("Locality")
+    Locality locality;
 
     Country(){
 
@@ -49,7 +51,12 @@ public class Country {
         return administrativeArea;
     }
 
-
+    /**
+     * @return Locality object
+     * */
+    public Locality getLocality() {
+        return locality;
+    }
 }
 
 

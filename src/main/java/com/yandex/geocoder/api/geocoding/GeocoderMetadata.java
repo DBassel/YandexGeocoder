@@ -11,11 +11,11 @@ public class GeocoderMetadata {
 
     /*Kind of toponym*/
     @SerializedName("kind")
-    private Kind kind;
+    private String kind;
 
     /*Precision of match request-respone building number pos */
     @SerializedName("precision")
-    private Precision precision;
+    private String precision;
 
     /*Full toponym address*/
     @SerializedName("text")
@@ -32,7 +32,7 @@ public class GeocoderMetadata {
      * @return Kind of the toponym
      * <br>Described at Yandex Geocoder <a href="https://tech.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderMetaData-docpage/">API 1.x</a>
      */
-    public Kind getKind() {
+    public String getKind() {
         return kind;
     }
 
@@ -41,7 +41,7 @@ public class GeocoderMetadata {
      * @return Precision of the found toponym
      * <br>Described at Yandex Geocoder <a href="https://tech.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderMetaData-docpage/">API 1.x</a>
      */
-    public Precision getPrecision() {
+    public String getPrecision() {
         return precision;
     }
 

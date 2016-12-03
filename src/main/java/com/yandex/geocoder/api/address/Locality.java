@@ -12,7 +12,8 @@ public  class Locality {
     Thoroughfare thoroughfare;
     @SerializedName("DependentLocality")
     DependentLocality dependentLocality;
-
+    @SerializedName("Premise")
+    Premise premise;
 
     Locality() {
 
@@ -39,5 +40,12 @@ public  class Locality {
      * */
     public DependentLocality getDependentLocality() {
         return dependentLocality;
+    }
+
+    /**
+     * @return Premise object
+     * */
+    public Premise getPremise() {
+        return premise;
     }
 }

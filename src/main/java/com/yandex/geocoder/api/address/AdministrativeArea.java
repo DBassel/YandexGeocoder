@@ -14,6 +14,9 @@ public class AdministrativeArea {
     @SerializedName("SubAdministrativeArea")
     SubAdministrativeArea subAdministrativeArea;
 
+    @SerializedName("Locality")
+    Locality locality;
+
 
     AdministrativeArea(){
 
@@ -30,6 +33,13 @@ public class AdministrativeArea {
      * */
     public SubAdministrativeArea getSubAdministrativeArea() {
         return subAdministrativeArea;
+    }
+
+    /**
+     * @return Locality object
+     * */
+    public Locality getLocality() {
+        return locality;
     }
 
 }

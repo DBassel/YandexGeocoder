@@ -6,7 +6,7 @@
 
     <groupId>com.yandex.geocoder</groupId>
     <artifactId>geocoder</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
 
     <name>Yandex Geocoder</name>
     <description>Java API for Yandex geocoder</description>
@@ -30,6 +30,11 @@
             <name>Andrew Ousenko</name>
             <email>ousenkoav@gmail.com</email>
             <url>https://github.com/ousenko</url>
+        </developer>
+        <developer>
+            <name>Basel Darvish</name>
+            <email>me@dbassel.com</email>
+            <url>https://github.com/DBassel</url>
         </developer>
     </developers>
 

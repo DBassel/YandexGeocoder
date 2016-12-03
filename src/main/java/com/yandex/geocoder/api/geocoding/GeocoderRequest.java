@@ -1,6 +1,8 @@
 package com.yandex.geocoder.api.geocoding;
 
 
+import java.util.Arrays;
+
 /**
  * Request to send to Geocoder service
  * <br>More info at Yandex Geocoder <a href="https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/input_params-docpage/"> API reference documentation</a>
@@ -31,11 +33,11 @@ public class GeocoderRequest {
     /*specify how many objects should one skip in response*/
     private int skip = SKIP_DEFAULT;
 
-    private ResponseLanguage language;
+    private String language;
 
     private String geocode;
 
-    private Kind kind;
+    private String kind;
 
     /*key is not necessary to use geocoder, as long as you perform no more than 25 000 requests per day*/
     private String key;
@@ -55,7 +57,7 @@ public class GeocoderRequest {
     /**
      * @return Kind of request, if specified, or null otherwise
      */
-    public Kind getKind() {
+    public String getKind() {
         return kind;
     }
 
@@ -125,7 +127,7 @@ public class GeocoderRequest {
     /**
      * @return language of response
      */
-    public ResponseLanguage getLanguage() {
+    public String getLanguage() {
         return language;
     }
 
@@ -172,17 +174,10 @@ public class GeocoderRequest {
          *
          * @throws IllegalArgumentException if provided Kind is other than those
          */
-        public Builder setKind(Kind kind) {
+        public Builder setKind(String kind) {
             if (kind != null) {
-                switch (kind) {
-                    case house:
-                    case street:
-                    case metro:
-                    case district:
-                    case locality:
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Kind could be set to the following values only: house, street, metro, district, locality");
+                if (!Arrays.asList(Kind.HOUSE, Kind.STREET, Kind.METRO, Kind.DISTRICT,Kind.LOCALITY).contains(kind)) {
+                    throw new IllegalArgumentException("Kind could be set to the following values only: house, street, metro, district, locality");
                 }
             }
             constructedRequest.kind = kind;
@@ -271,7 +266,7 @@ public class GeocoderRequest {
          * @param language response language
          *                 @return the same builder object
          */
-        public Builder setLanguage(ResponseLanguage language) {
+        public Builder setLanguage(String language) {
             constructedRequest.language = language;
             return this;
         }
